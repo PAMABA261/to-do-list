@@ -18,11 +18,11 @@ public class Tarea {
     private Long id;
 
     @Column(nullable = false)
-    private String titulo;
+    private String title;
 
-    private String descripcion;
+    private String description;
 
-    private boolean completada;
+    private boolean is_completed;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
@@ -39,28 +39,28 @@ public class Tarea {
         this.id = id;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public boolean isCompletada() {
-        return completada;
+    public boolean isIs_completed() {
+        return is_completed;
     }
 
-    public void setCompletada(boolean completada) {
-        this.completada = completada;
+    public void setIs_completed(boolean is_completed) {
+        this.is_completed = is_completed;
     }
 
     public Usuario getUsuario() {
@@ -70,4 +70,5 @@ public class Tarea {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
 }
