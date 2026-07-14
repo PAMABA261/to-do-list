@@ -1,5 +1,8 @@
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,6 +27,7 @@ public class Tarea {
 
     private boolean is_completed;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
@@ -55,7 +59,7 @@ public class Tarea {
         this.description = description;
     }
 
-    public boolean isIs_completed() {
+    public boolean getIs_completed() {
         return is_completed;
     }
 

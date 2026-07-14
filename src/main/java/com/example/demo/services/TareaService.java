@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,25 @@ public class TareaService {
         return tareaRepository.findByUsuarioId(usuarioId);
     }
 
-    public Tarea crearTarea(Tarea nuevaTarea) {
+    public Tarea crearTarea (Tarea nuevaTarea) {
         return tareaRepository.save(nuevaTarea);
+    }
+
+    public Tarea actualizarTarea (Long id) {
+        Optional <Tarea> aux = tareaRepository.findById(id);
+        if (aux.isPresent()) {
+            Tarea tareaParaModificar = aux.get();
+            tareaParaModificar.setIs_completed(true);
+            return tareaRepository.save(tareaParaModificar);
+        }
+        return null;
+
+    }
+
+    public void borrarTarea (Long id) {
+        Optional <Tarea> aux = tareaRepository.findById(id);
+        if (aux.isPresent()) {
+            tareaRepository.deleteById(id);
+        }
     }
 }
