@@ -1,7 +1,6 @@
 package com.example.demo.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -26,20 +25,13 @@ public class TareaService {
     }
 
     public Tarea actualizarTarea (Long id) {
-        Optional <Tarea> aux = tareaRepository.findById(id);
-        if (aux.isPresent()) {
-            Tarea tareaParaModificar = aux.get();
-            tareaParaModificar.setIs_completed(true);
-            return tareaRepository.save(tareaParaModificar);
-        }
-        return null;
-
+        Tarea tarea = tareaRepository.findById(id).orElseThrow(() -> new RuntimeException("Tarea no encontrada con ID " + id));
+        tarea.setIs_completed(true);
+        return tareaRepository.save(tarea);
     }
 
     public void borrarTarea (Long id) {
-        Optional <Tarea> aux = tareaRepository.findById(id);
-        if (aux.isPresent()) {
-            tareaRepository.deleteById(id);
-        }
+        Tarea tarea = tareaRepository.findById(id).orElseThrow(() -> new RuntimeException("Tarea no encontrada con ID " + id));
+        tareaRepository.delete(tarea);
     }
 }
