@@ -25,9 +25,9 @@ public class TareaController {
         this.tareaService = tareaService;
     }
 
-    @PostMapping
-    public Tarea crearTarea (@RequestBody Tarea nuevaTarea) {
-        return tareaService.crearTarea(nuevaTarea);
+    @PostMapping("/usuario/{usuarioId}")
+    public Tarea crearTarea (@PathVariable Long usuarioId, @RequestBody Tarea nuevaTarea) {
+        return tareaService.crearTarea(usuarioId, nuevaTarea);
     }
 
     @GetMapping("/usuario/{usuarioId}")
